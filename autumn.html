@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/dist/mindar.prod.js"></script>
+    <script src="videoClick.js"></script>
+</head>
+<body>
+    <a-scene mindar="imageTargetSrc: autumnTarget.mind; showStats: true;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-assets>
+            <img id="playButtonImg" src="playButtonImg.png" alt="play button image"/>
+            <video id="asset_vid_1" src="AR-test-video.mp4"  type="video/mp4" preload="auto" response-type="arraybuffer" loop crossorigin webkit-playsinline autoplay playsinline play="false"></video>
+        </a-assets>
+  
+        <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable"></a-camera>
+  
+        <a-entity mindar-image-target="targetIndex: 0">
+          <a-plane
+          class="clickable"
+          videohandler      
+          id="playButton"  
+          material="src: #playButtonImg; alpha-test: 0.5"   
+          position="0 0 1" 	   
+          rotation="45 0 0" 
+          height="0.4" 
+          width="0.4" 
+          render-order="layer3" 
+          >
+      </a-plane>
+          <a-plane id="example-plane" class="clickable" material="src: #asset_vid_1; alpha-test:0.5" opaciy="0.5" position="0 0 0" height="1" width="1.5" rotation="45 0 0"></a-plane>
+        </a-entity>
+      </a-scene>
+</body>
+</html>
