@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@0.3.1/dist/mindar.prod.js"></script>
+    <!-- <script src="videoClick.js"></script> -->
+</head>
+<body>
+    <a-scene gltf-model="dracoDecoderPath: draco/;" mindar="imageTargetSrc: poolTarget.mind; showStats: true;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-assets>
+            <a-asset-item id="glbModel" src="./models/Duck.glb" response-type="arraybuffer"></a-asset-item>
+        </a-assets>
+  
+        <a-camera position="0 0 0" look-controls="enabled: false" cursor="fuse: false; rayOrigin: mouse;" raycaster="far: 10000; objects: .clickable"></a-camera>
+  
+        <a-entity mindar-image-target="targetIndex: 0">
+            <a-entity gltf-model="#glbModel" position="0 0 0" scale="0.5 0.5 0.5" 
+                animation="property: position; to: 0 0.3 0.3; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate" 
+                animation__2="property: rotation; to: 0 360 0; dur: 2000; easing: easeInOutQuad; loop: true; dir: alternate">
+            </a-entity>
+        </a-entity>
+      </a-scene>
+</body>
+</html>
